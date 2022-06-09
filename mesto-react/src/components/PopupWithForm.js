@@ -5,10 +5,13 @@ function PopupWithForm({
   children,
   isOpened,
   onClose,
-  onOverlay
+  onOverlay,
 }) {
   return (
-    <div className={`popup popup_type_${name} ${isOpened && "popup_opened"} `} onMouseDown={onOverlay}>
+    <div
+      className={`popup popup_type_${name} ${isOpened && "popup_opened"} `}
+      onMouseDown={onOverlay}
+    >
       <div className={`popup__container popup__container_type_${name}`}>
         <button className="button button_type_esc" onClick={onClose}></button>
         <h2 className="popup__header">{title}</h2>

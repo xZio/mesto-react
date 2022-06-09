@@ -1,9 +1,8 @@
 function Card({ card, onCardClick }) {
-  
   function handleClick() {
     onCardClick(card);
-  }  
-  
+  }
+
   return (
     <div id="card">
       <li className="card">

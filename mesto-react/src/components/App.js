@@ -14,7 +14,7 @@ function App() {
     React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
 
-  function handleEcsClose(evt){
+  function handleEcsClose(evt) {
     if (evt.key === ESC_CODE) {
       closeAllPopups();
     }
@@ -47,9 +47,9 @@ function App() {
     document.removeEventListener("keydown", handleEcsClose);
   }
 
-  function handleOverlayClick(evt){
+  function handleOverlayClick(evt) {
     if (evt.target === evt.currentTarget) {
-      closeAllPopups()
+      closeAllPopups();
     }
   }
 
@@ -70,7 +70,7 @@ function App() {
           buttonText={"Сохранить"}
           isOpened={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          onOverlay = {handleOverlayClick}
+          onOverlay={handleOverlayClick}
         >
           <input
             id="profile-name"
@@ -106,7 +106,7 @@ function App() {
           buttonText={"Создать"}
           isOpened={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          onOverlay = {handleOverlayClick}
+          onOverlay={handleOverlayClick}
         >
           <input
             id="card-title"
@@ -139,7 +139,7 @@ function App() {
           buttonText={"Сохранить"}
           isOpened={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-          onOverlay = {handleOverlayClick}
+          onOverlay={handleOverlayClick}
         >
           <input
             id="avatar-url"
@@ -161,13 +161,13 @@ function App() {
           name={"confirm"}
           title={"Вы уверены?"}
           buttonText={"Да"}
-          onOverlay = {handleOverlayClick}
+          onOverlay={handleOverlayClick}
           onClose={closeAllPopups}
         ></PopupWithForm>
         <PopupWithImage
           card={selectedCard}
           onClose={closeAllPopups}
-          onOverlay = {handleOverlayClick}
+          onOverlay={handleOverlayClick}
         ></PopupWithImage>
       </div>
     </div>
