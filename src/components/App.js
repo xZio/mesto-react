@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./PopupWithImage";
+import ImagePopup from "./ImagePopup";
 import { ESC_CODE } from "../utils/utils.js";
 
 function App() {
@@ -164,11 +164,11 @@ function App() {
           onOverlay={handleOverlayClick}
           onClose={closeAllPopups}
         ></PopupWithForm>
-        <PopupWithImage
+        <ImagePopup
           card={selectedCard}
           onClose={closeAllPopups}
           onOverlay={handleOverlayClick}
-        ></PopupWithImage>
+        ></ImagePopup>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-function PopupWithImage({ card, onClose, onOverlay }) {
+function ImagePopup({ card, onClose, onOverlay }) {
   return (
     <div
       className={`popup popup_type_image ${card && "popup_opened"}`}
@@ -16,4 +16,4 @@ function PopupWithImage({ card, onClose, onOverlay }) {
     </div>
   );
 }
-export default PopupWithImage;
+export default ImagePopup;
