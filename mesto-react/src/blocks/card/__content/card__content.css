@@ -1,0 +1,8 @@
+.card__content {
+  border-radius: 0 0 10px 10px;
+  background-color: #fff;
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

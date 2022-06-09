@@ -1,0 +1,12 @@
+.button {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s;
+  padding: 0;
+  border: 0;
+  background-color: #000;
+  border-style: none;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+}

@@ -1,0 +1,13 @@
+.button_type_del {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/deleteButton.svg);
+  background-color: transparent;
+}
+
+.button_type_del:hover {
+  opacity: 0.6;
+}
