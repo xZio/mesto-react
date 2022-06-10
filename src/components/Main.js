@@ -25,7 +25,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
     <main>
       <section className="profile">
         <div className="profile__avatar-place">
-          <img src={userAvatar} alt="Аватар" className="profile__avatar" />
+          {userAvatar && <img src={userAvatar} alt="Аватар" className="profile__avatar" />}
           <button
             className="button button_type_save button_type_avatar"
             onClick={onEditAvatar}

@@ -65,9 +65,9 @@ function App() {
         />
         <Footer />
         <PopupWithForm
-          name={"profile"}
-          title={"Редактировать профиль"}
-          buttonText={"Сохранить"}
+          name="profile"
+          title="Редактировать профиль"
+          buttonText="Сохранить"
           isOpened={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onOverlay={handleOverlayClick}
@@ -82,9 +82,7 @@ function App() {
             name="profile-name"
             required
           />
-          <span className="popup__error" id="profile-name-error">
-            3
-          </span>
+          <span className="popup__error" id="profile-name-error"></span>
           <input
             id="profile-job"
             type="text"
@@ -95,15 +93,13 @@ function App() {
             name="profile-job"
             required
           />
-          <span className="popup__error" id="profile-job-error">
-            4
-          </span>
+          <span className="popup__error" id="profile-job-error"></span>
         </PopupWithForm>
 
         <PopupWithForm
-          name={"card"}
-          title={"Новое место"}
-          buttonText={"Создать"}
+          name="card"
+          title="Новое место"
+          buttonText="Создать"
           isOpened={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onOverlay={handleOverlayClick}
@@ -134,9 +130,9 @@ function App() {
           </span>
         </PopupWithForm>
         <PopupWithForm
-          name={"avatar"}
-          title={"Обновить аватар"}
-          buttonText={"Сохранить"}
+          name="avatar"
+          title="Обновить аватар"
+          buttonText="Сохранить"
           isOpened={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onOverlay={handleOverlayClick}
@@ -158,9 +154,9 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm
-          name={"confirm"}
-          title={"Вы уверены?"}
-          buttonText={"Да"}
+          name="confirm"
+          title="Вы уверены?"
+          buttonText="Да"
           onOverlay={handleOverlayClick}
           onClose={closeAllPopups}
         ></PopupWithForm>
