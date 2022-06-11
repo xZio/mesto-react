@@ -114,9 +114,7 @@ function App() {
             name="card-place"
             required
           />
-          <span className="popup__error" id="card-place-error">
-            1
-          </span>
+          <span className="popup__error" id="card-place-error"></span>
           <input
             id="card-src"
             type="url"
@@ -125,9 +123,7 @@ function App() {
             name="card-src"
             required
           />
-          <span className="popup__error" id="card-src-error">
-            2
-          </span>
+          <span className="popup__error" id="card-src-error"></span>
         </PopupWithForm>
         <PopupWithForm
           name="avatar"
@@ -148,9 +144,7 @@ function App() {
           <span
             className="popup__error popup__error_type_avatar"
             id="avatar-url-error"
-          >
-            2
-          </span>
+          ></span>
         </PopupWithForm>
 
         <PopupWithForm
