@@ -3,13 +3,16 @@ function PopupWithForm({
   title,
   buttonText,
   children,
-  isOpened,
+  isOpen,
   onClose,
   onOverlay,
+  onSubmit,
+  isLoading,
+  isValid,
 }) {
   return (
     <div
-      className={`popup popup_type_${name} ${isOpened && "popup_opened"} `}
+      className={`popup popup_type_${name} ${isOpen && "popup_opened"} `}
       onMouseDown={onOverlay}
     >
       <div className={`popup__container popup__container_type_${name}`}>
@@ -18,14 +21,20 @@ function PopupWithForm({
         <form
           className={`popup__form popup__form_type_${name}`}
           name={`${name}-form`}
+          onSubmit={onSubmit}
           noValidate
         >
           {children}
           <button
+            disabled={!isValid}
             type="submit"
-            className="button button_type_save popup__save-button"
+            className={
+              isValid
+                ? "button button_type_save popup__save-button"
+                : "button button_type_save popup__save-button button_type_save_disabled"
+            }
           >
-            {buttonText}
+            {isLoading ? "Сохранение..." : buttonText}
           </button>
         </form>
       </div>
