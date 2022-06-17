@@ -23,6 +23,12 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState(null);
   const [cards, setCards] = React.useState([]);
   const [deletedCard, setDeletedCard] = React.useState(null);
+  const isOpen =
+    isEditProfilePopupOpen ||
+    isAddPlacePopupOpen ||
+    isEditAvatarPopupOpen ||
+    isConfirmPopupOpen ||
+    selectedCard;
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -52,36 +58,24 @@ function App() {
       });
   }
 
-  function handleEcsClose(evt) {
-    if (evt.key === ESC_CODE) {
-      closeAllPopups();
-    }
-  }
-
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
-    document.addEventListener("keydown", handleEcsClose);
   }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
-    document.addEventListener("keydown", handleEcsClose);
   }
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
-    document.addEventListener("keydown", handleEcsClose);
   }
 
   function handleDeleteClick(card) {
     setDeletedCard(card);
     setIsConfirmPopupOpen(true);
-
-    document.addEventListener("keydown", handleEcsClose);
   }
 
   function handleCardClick(card) {
     setSelectedCard(card);
-    document.addEventListener("keydown", handleEcsClose);
   }
 
   function closeAllPopups() {
@@ -91,7 +85,6 @@ function App() {
     setIsConfirmPopupOpen(false);
     setSelectedCard(null);
     setIsLoading(false);
-    document.removeEventListener("keydown", handleEcsClose);
   }
 
   function handleOverlayClick(evt) {
@@ -115,18 +108,28 @@ function App() {
 
   function handleUpdateAvatar({ avatar }) {
     setIsLoading(true);
-    api.updateAvatar(avatar).then((data) => {
-      setCurrentUser(data);
-      closeAllPopups();
-    });
+    api
+      .updateAvatar(avatar)
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleAddPlaceSubmit({ name, link }) {
     setIsLoading(true);
-    api.addCard({ name, link }).then((newCard) => {
-      setCards([newCard, ...cards]);
-      closeAllPopups();
-    });
+    api
+      .addCard({ name, link })
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   React.useEffect(() => {
@@ -139,6 +142,21 @@ function App() {
         console.log(err);
       });
   }, []);
+
+  React.useEffect(() => {
+    function handleEcsClose(evt) {
+      if (evt.key === ESC_CODE) {
+        closeAllPopups();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEcsClose);
+      return () => {
+        document.removeEventListener("keydown", handleEcsClose);
+      };
+    }
+  }, [isOpen]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

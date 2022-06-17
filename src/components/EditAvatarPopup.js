@@ -1,5 +1,6 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 function EditAvatarPopup({
   isOpen,
@@ -8,29 +9,20 @@ function EditAvatarPopup({
   onUpdateAvatar,
   isLoading,
 }) {
-  const [avatarInput, setAvatarInput] = React.useState("");
-  const [linkError, setLinkError] = React.useState("");
-  const [isValid, setIsValid] = React.useState(false);
-
-  function handleAvatarLinkChange(e) {
-    setAvatarInput(e.target.value)
-    setLinkError(e.target.validationMessage);
-    setIsValid(e.target.form.checkValidity());
-  }
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
 
     onUpdateAvatar({
-      avatar: avatarInput,
+      avatar: values.url,
     });
   }
 
   React.useEffect(() => {
-    setLinkError("");
-    setIsValid(false);
-    setAvatarInput("");
-  }, [isOpen]);
+    resetForm();
+  }, [isOpen, resetForm]);
 
   return (
     <PopupWithForm
@@ -45,20 +37,20 @@ function EditAvatarPopup({
       isValid={isValid}
     >
       <input
-        value={avatarInput}
+        value={values.url || ""}
         id="avatar-url"
         type="url"
         placeholder="Ссылка на аватар"
         className="popup__input"
-        name="avatar-url"
-        onChange={handleAvatarLinkChange}
+        name="url"
+        onChange={handleChange}
         required
       />
       <span
         className="popup__error popup__error_type_avatar"
         id="avatar-url-error"
       >
-        {linkError}
+        {errors.url}
       </span>
     </PopupWithForm>
   );
