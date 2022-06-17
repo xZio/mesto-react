@@ -25,30 +25,28 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   return (
-    <div id="card">
-      <li className="card">
-        <img
-          src={card.link}
-          onClick={handleClick}
-          alt=""
-          className="card__image"
-        />
-        <div className="card__content">
-          <h2 className="card__name">{card.name} </h2>
-          <div className="card__like-place">
-            <button
-              className={cardLikeButtonClassName}
-              onClick={handleLikeClick}
-            ></button>
-            <span className="card__likes">{card.likes.length}</span>
-          </div>
+    <li className="card">
+      <img
+        src={card.link}
+        onClick={handleClick}
+        alt={card.name}
+        className="card__image"
+      />
+      <div className="card__content">
+        <h2 className="card__name">{card.name}</h2>
+        <div className="card__like-place">
           <button
-            className={cardDeleteButtonClassName}
-            onClick={handleCardDelete}
+            className={cardLikeButtonClassName}
+            onClick={handleLikeClick}
           ></button>
+          <span className="card__likes">{card.likes.length}</span>
         </div>
-      </li>
-    </div>
+        <button
+          className={cardDeleteButtonClassName}
+          onClick={handleCardDelete}
+        ></button>
+      </div>
+    </li>
   );
 }
 export default Card;
